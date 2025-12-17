@@ -7,31 +7,39 @@ struct student {
     float gpa;
 };
 
-struct student upgrade(struct student child);
+void GetStudent(struct student child[][10], int *room) {
+    int i, j;
 
-int main() {
-    struct student aboy;
-    aboy.sex = 'M';
-    aboy.gpa = 3.00;
+    printf("Enter number of rooms: ");
+    scanf("%d", room);
 
-    printf("GPA ก่อนเรียกฟังก์ชัน: %.2f\n", aboy.gpa);
+    for (i = 0; i < *room; i++) {
+        printf("Room %d\n", i + 1);
 
-    aboy = upgrade(aboy);
+        for (j = 0; j < 10; j++) {
+            printf("Student %d\n", j + 1);
 
-    printf("GPA หลังเรียกฟังก์ชัน: %.2f\n", aboy.gpa);
+            printf("Name: ");
+            scanf("%s", child[i][j].name);
 
-    return 0;
+            printf("Age: ");
+            scanf("%d", &child[i][j].age);
+
+            printf("Sex: ");
+            scanf(" %c", &child[i][j].sex);
+
+            printf("GPA: ");
+            scanf("%f", &child[i][j].gpa);
+        }
+    }
 }
 
-struct student upgrade(struct student child) {
-    if (child.sex == 'M') {
-        child.gpa *= 1.10;
-        printf("  > เป็นผู้ชาย (M): GPA เพิ่มขึ้น 10%% (ใหม่: %.2f)\n", child.gpa);
-    } else if (child.sex == 'F') {
-        child.gpa *= 1.20;
-        printf("  > เป็นผู้หญิง (F): GPA เพิ่มขึ้น 20%% (ใหม่: %.2f)\n", child.gpa);
-    } else {
-        printf("  > ไม่สามารถระบุเพศได้: ไม่มีการเปลี่ยนแปลง GPA\n");
-    }
-    return child;
+int main() {
+
+    struct student children[20][10];
+    int group;
+
+    GetStudent(children, &group);
+
+    return 0;
 }

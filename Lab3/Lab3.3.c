@@ -7,7 +7,7 @@ struct student {
     float gpa;
 };
 
-void upgrade(struct student child) {
+struct student upgrade(struct student child) {
 
     if (child.sex == 'M') {
         child.gpa = child.gpa + (child.gpa * 0.10);
@@ -16,6 +16,7 @@ void upgrade(struct student child) {
         child.gpa = child.gpa + (child.gpa * 0.20);
     }
 
+    return child;
 }
 
 int main() {
@@ -25,7 +26,7 @@ int main() {
     aboy.sex = 'M';
     aboy.gpa = 3.00;
 
-    upgrade(aboy);
+    aboy = upgrade(aboy);
 
     printf("%.2f", aboy.gpa);
 
